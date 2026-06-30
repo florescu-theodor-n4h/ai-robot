@@ -338,3 +338,4 @@ sudo journalctl -xeu tomcat10.service  # View service logs
 - Tomcat logs are in `/var/log/tomcat10/` for debugging
 - Use `sudo` for system-wide installations and service management
 
+- a se instala pachetul pentru evitarea : ImportError: You need to install `bitsandbytes` in order to use bitsandbytes optimizers: `pip install -U bitsandbytes`

@@ -16,6 +16,7 @@ AI_weight_lora/venv/
 output/
 lora_out/
 logs/
+bitsandbytes/
 *.log
 
 # ===== Model / ML artifacts =====
