@@ -1,0 +1,67 @@
+.
+├── AI_weight_lora
+│   └── venv
+│       ├── bin
+│       │   ├── accelerate
+│       │   ├── accelerate-config
+│       │   ├── accelerate-estimate-memory
+│       │   ├── accelerate-launch
+│       │   ├── accelerate-merge-weights
+│       │   ├── activate
+│       │   ├── activate.csh
+│       │   ├── activate.fish
+│       │   ├── Activate.ps1
+│       │   ├── datasets-cli
+│       │   ├── f2py
+│       │   ├── get_gprof
+│       │   ├── get_objgraph
+│       │   ├── hf
+│       │   ├── httpx
+│       │   ├── huggingface-cli
+│       │   ├── idna
+│       │   ├── isympy
+│       │   ├── markdown-it
+│       │   ├── normalizer
+│       │   ├── numpy-config
+│       │   ├── pip
+│       │   ├── pip3
+│       │   ├── pip3.10
+│       │   ├── proton
+│       │   ├── proton-viewer
+│       │   ├── pygmentize
+│       │   ├── python -> python3.10
+│       │   ├── python3 -> python3.10
+│       │   ├── python3.10 -> /usr/bin/python3.10
+│       │   ├── tiny-agents
+│       │   ├── torchfrtrace
+│       │   ├── torchrun
+│       │   ├── tqdm
+│       │   ├── transformers
+│       │   ├── typer
+│       │   └── undill
+│       ├── include
+│       ├── lib
+│       │   └── python3.10
+│       │       └── site-packages
+│       ├── lib64 -> lib
+│       ├── pyvenv.cfg
+│       └── share
+│           └── man
+│               └── man1
+├── amdgpu-install_7.2.4.70204-1_all.deb
+├── execstack_0.0.20131005-1+b10_amd64.deb
+├── FILES.txt
+├── lora_adapter
+│   ├── adapter_config.json
+│   ├── adapter_model.safetensors
+│   ├── chat_template.jinja
+│   ├── README.md
+│   ├── tokenizer_config.json
+│   └── tokenizer.json
+├── lora_out
+├── output
+├── runLLMAgentForAgenticDevs.py
+├── run.py
+└── runVenv.sh
+
+14 directories, 51 files

@@ -1,0 +1,39 @@
+AI  firewall.sh  remove_trash.sh  view-tomcat-log-bugs.sh
+root@salon:~# cd AI/
+root@salon:~/AI# ./run
+-bash: ./run: No such file or directory
+root@salon:~/AI# ./run.py
+[OK] torch
+[OK] transformers
+[OK] datasets
+[OK] peft
+[OK] accelerate
+[OK] sentencepiece
+[OK] huggingface_hub
+
+[CHECK] PyTorch version: 2.6.0+rocm6.1
+[ROCM] detected HIP: 6.1.40091-a8dbc0c19
+
+[MODEL] loading...
+Fetching 10 files: 100%|█████████████████████| 10/10 [00:00<00:00, 7610.79it/s]
+Download complete: : 0.00B [00:00, ?B/s]                | 0/10 [00:00<?, ?it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 201/201 [00:06<00:00, 29.98it/s]
+Map: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 84.07 examples/s]
+[TRAIN] starting...
+  0%|                                                                                                                                                                                       | 0/1 [00:00<?, ?it/s]/root/AI/AI_weight_lora/venv/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py:130: UserWarning: Attempting to use hipBLASLt on an unsupported architecture! Overriding blas backend to hipblas (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:310.)
+  freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(1, 2)
+{'loss': '5.657', 'grad_norm': 'nan', 'learning_rate': '0.0002', 'epoch': '1'}
+{'train_runtime': '2.216', 'train_samples_per_second': '1.354', 'train_steps_per_second': '0.451', 'train_loss': '5.657', 'epoch': '1'}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02<00:00,  2.21s/it]
+
+[DONE] saved to ./lora_adapter
+
+=== SYSTEM SUMMARY ===
+ROCm: True
+Device: GPU/ROCm or CPU
+Mode: LoRA fine-tuning
+root@salon:~/AI#
+
+
+

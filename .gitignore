@@ -1,0 +1,40 @@
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+AI_weight_lora/venv/
+
+# ===== Outputs / runtime =====
+output/
+lora_out/
+logs/
+*.log
+
+# ===== Model / ML artifacts =====
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.onnx
+
+# Optional HF/tokenizer files (keep only if needed)
+tokenizer.json
+tokenizer_config.json
+
+# ===== System / installs =====
+*.deb
+
+# ===== OS files =====
+.DS_Store
+
+# ===== Git / tooling =====
+.pytest_cache/
+.mypy_cache/
