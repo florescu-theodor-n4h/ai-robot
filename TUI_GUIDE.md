@@ -11,6 +11,7 @@ The server now includes a **colorful, newbie-friendly TUI** (Terminal User Inter
 - 📚 **API Quick Start** - Copy-paste ready API examples
 - 📊 **Runtime Status** - Request tracking and error monitoring
 - 🔴 **Error Display** - Beautiful error panels for troubleshooting
+- 📈 **Live Status Monitor** - Real-time server metrics in a separate terminal
 
 ## 🚀 Quick Start
 
@@ -70,6 +71,29 @@ python /root/AI/demo_tui.py status
 python /root/AI/demo_tui.py all
 ```
 
+### Run Live Status Monitor
+
+In a **separate terminal** while the server is running:
+
+```bash
+# Activate venv
+source /root/AI/enter_venv
+
+# Run the live status monitor
+python -m training_src.status_monitor
+
+# Or from the training_src directory:
+cd /root/AI && python training_src/status_monitor.py
+```
+
+This will display a live-updating dashboard showing:
+- ⏱️ Server uptime
+- 🤖 Model status
+- 🔌 Server status
+- 📬 Request count (live updates)
+- ❌ Error count (live updates)
+- 🔤 Total tokens generated (live updates)
+
 ## 📋 TUI Components
 
 ### 1. Welcome Banner
@@ -123,7 +147,7 @@ Copy-paste ready examples for:
 
 ### 6. Runtime Status Table
 
-Tracks:
+Tracks (displayed in both startup and live monitor):
 - ⏱️ Server uptime
 - 🤖 Model status
 - 🔌 Server status
@@ -131,7 +155,15 @@ Tracks:
 - ❌ Error count
 - 🔤 Total tokens generated
 
-### 7. Error Display
+### 7. Live Status Monitor
+
+A separate window that displays:
+- 📊 Real-time status table
+- 🕐 Timestamp of last update
+- Auto-refreshing display (1 Hz)
+- Can run in separate terminal
+
+### 8. Error Display
 
 Beautiful red panels with:
 - ❌ Error title
@@ -219,6 +251,7 @@ runLLMAgentForAgenticDevs.py (Source of Truth)
 
 training_src/
     ├── tui.py (ServerStatusTUI class)
+    ├── status_monitor.py (LiveStatusMonitor for real-time tracking)
     ├── config.py (Re-exports CONFIG)
     ├── logging_setup.py (Logging)
     ├── model.py (ModelLoader)
@@ -234,12 +267,13 @@ demo_tui.py (Demo script for testing TUI features)
 - Clear progress indicators
 - Copy-paste API examples
 - Beautiful error messages
+- Live status monitoring
 
 ✅ **Informative**
 - Shows all configuration at startup
 - Displays server details
-- Tracks requests and errors
-- Real-time status updates
+- Tracks requests and errors in real-time
+- Live-updating status dashboard
 
 ✅ **Professional**
 - Clean, organized layout
@@ -267,6 +301,7 @@ Then the server runs and logs all requests.
 
 - **`runLLMAgentForAgenticDevs.py`** - Main server with TUI integration
 - **`training_src/tui.py`** - ServerStatusTUI class
+- **`training_src/status_monitor.py`** - LiveStatusMonitor for real-time tracking
 - **`training_src/tui_compat.py`** - Re-export compatibility layer
 - **`demo_tui.py`** - Demo script for testing TUI features
 
@@ -295,6 +330,11 @@ Then the server runs and logs all requests.
 **Issue: Server starts but TUI doesn't show**
 - Check that `rich` is installed: `pip install rich`
 - Check logs for any import errors
+
+**Issue: Live status monitor crashes**
+- Make sure you're using separate terminals for server and monitor
+- Check that `rich` is properly installed
+- Try running the demo first: `python demo_tui.py all`
 
 ## 📚 Learn More
 
