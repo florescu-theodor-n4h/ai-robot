@@ -13,6 +13,9 @@ from pydantic import BaseModel
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
 
+# Import TUI
+from training_src.tui import get_tui
+
 # =========================
 # CONFIGURATION (SOURCE OF TRUTH)
 # =========================
@@ -118,16 +121,23 @@ llm = None
 def initialize_app(config: Config):
     """Initialize FastAPI app and model."""
     global log, app, llm
+    
+    tui = get_tui()
+    tui.show_welcome_banner()
 
     log = setup_logging(config)
     log.info("=" * 60)
     log.info("LLM Agentic Dev Server Starting")
     log.info("=" * 60)
 
+    # Show environment
+    tui.show_startup_progress("Environment Setup", "Configuring hardware...")
     apply_environment_config(config)
+    tui.show_startup_progress("Environment Setup", "Done!", complete=True)
     log.debug(f"Environment config applied: {config.env.__dict__}")
 
     # Load model
+    tui.show_startup_progress("Model Download", "Fetching TinyLlama from HuggingFace...")
     log.info(f"Loading model: {config.model.repo}/{config.model.file}")
     try:
         model_path = hf_hub_download(
@@ -135,7 +145,9 @@ def initialize_app(config: Config):
             filename=config.model.file
         )
         log.info(f"Model downloaded to: {model_path}")
+        tui.show_startup_progress("Model Download", "Complete!", complete=True)
 
+        tui.show_startup_progress("Model Initialization", "Loading into memory...")
         llm = Llama(
             model_path=model_path,
             n_ctx=config.model.ctx_size,
@@ -143,18 +155,32 @@ def initialize_app(config: Config):
             verbose=config.model.verbose
         )
         log.info("Model loaded successfully")
+        tui.show_startup_progress("Model Initialization", "Ready!", complete=True)
+        tui.mark_model_loaded()
+        
     except Exception as e:
         log.error(f"Failed to load model: {e}")
         log.debug(traceback.format_exc())
+        tui.show_error("Model Loading Failed", str(e))
         raise
 
     # Create FastAPI app
+    tui.show_startup_progress("API Setup", "Creating FastAPI app...")
     app = FastAPI(title="LLM Agentic Dev Server")
     log.info("FastAPI application created")
+    tui.show_startup_progress("API Setup", "Done!", complete=True)
 
     # Setup routes
+    tui.show_startup_progress("Route Registration", "Registering endpoints...")
     _setup_routes(app, config)
     log.info("Routes registered")
+    tui.show_startup_progress("Route Registration", "Done!", complete=True)
+
+    # Show beautiful ready screen
+    tui.show_server_ready(config)
+    tui.show_environment_info(config)
+    tui.show_api_examples()
+    tui.mark_server_running()
 
     return app, llm, config
 
