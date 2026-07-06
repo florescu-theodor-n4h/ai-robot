@@ -191,43 +191,52 @@ def initialize_app(config: Config):
 def extract_text(content):
     """Safely extract text from various content types."""
     if content is None:
-        log.debug("extract_text: content is None")
+        if log:
+            log.debug("extract_text: content is None")
         return ""
 
     if isinstance(content, str):
-        log.debug(f"extract_text: string content, len={len(content)}")
+        if log:
+            log.debug(f"extract_text: string content, len={len(content)}")
         return content
 
     if isinstance(content, list):
         out = []
-        log.debug(f"extract_text: list with {len(content)} items")
+        if log:
+            log.debug(f"extract_text: list with {len(content)} items")
         for i, c in enumerate(content):
             if isinstance(c, str):
                 out.append(c)
-                log.debug(f"  [{i}] string: {len(c)} chars")
+                if log:
+                    log.debug(f"  [{i}] string: {len(c)} chars")
             elif isinstance(c, dict):
                 if c.get("type") == "text":
                     text = c.get("text", "")
                     out.append(text)
-                    log.debug(f"  [{i}] dict type=text: {len(text)} chars")
+                    if log:
+                        log.debug(f"  [{i}] dict type=text: {len(text)} chars")
                 elif "text" in c:
                     text = str(c["text"])
                     out.append(text)
-                    log.debug(f"  [{i}] dict with text key: {len(text)} chars")
+                    if log:
+                        log.debug(f"  [{i}] dict with text key: {len(text)} chars")
         result = "\n".join(out)
-        log.debug(f"extract_text: total {len(result)} chars")
+        if log:
+            log.debug(f"extract_text: total {len(result)} chars")
         return result
 
-    log.debug(f"extract_text: unknown type, converting to string")
+    if log:
+        log.debug(f"extract_text: unknown type, converting to string")
     return str(content)
 
 
 def hard_clip(text, max_chars=3000):
     """Aggressively clip text to max_chars from the end."""
-    if not text:
+    if not text or max_chars <= 0:
         return ""
     if len(text) > max_chars:
-        log.debug(f"hard_clip: {len(text)} -> {max_chars}")
+        if log:
+            log.debug(f"hard_clip: {len(text)} -> {max_chars}")
         return text[-max_chars:]
     return text
 
