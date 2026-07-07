@@ -1,0 +1,12 @@
+{
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "source_choice": 0,
+  "dataset_path": "",
+  "epochs": 1,
+  "max_length": 256,
+  "gradient_accumulation_steps": 1,
+  "learning_rate": 0.0002,
+  "adapter_dir": "/root/AI/runs_cpu/adapters",
+  "output_dir": "/root/AI/runs_cpu/outputs",
+  "started_at": "2026-07-06T14:11:03"
+}

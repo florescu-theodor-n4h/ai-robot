@@ -3,11 +3,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pyc
+*$py.class
 
 # Virtual environments
 venv/
 .venv/
+.venv-*/
 env/
 ENV/
 AI_weight_lora/venv/
@@ -18,6 +19,9 @@ lora_out/
 logs/
 bitsandbytes/
 *.log
+.coverage
+.coverage.*
+htmlcov/
 
 # ===== Model / ML artifacts =====
 *.safetensors
@@ -39,3 +43,13 @@ tokenizer_config.json
 # ===== Git / tooling =====
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.hypothesis/
+.tox/
+.nox/
+.cache/
+.ipynb_checkpoints/
+.dmypy.json
+dmypy.json

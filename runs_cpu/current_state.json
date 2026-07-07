@@ -1,0 +1,17 @@
+{
+  "status": "done",
+  "pid": 11435,
+  "started_at": "2026-07-06T14:11:03",
+  "elapsed_seconds": 60,
+  "step": 6,
+  "max_steps": 6,
+  "epoch": 1.0,
+  "epochs": 1,
+  "loss": 2.40781569480896,
+  "learning_rate": 4e-05,
+  "examples": 6,
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "adapter_dir": "/root/AI/runs_cpu/adapters",
+  "message": "Training complete.",
+  "finished_at": "2026-07-06T14:12:13"
+}

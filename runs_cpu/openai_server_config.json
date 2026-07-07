@@ -1,0 +1,14 @@
+{
+  "adapter_dir": "/root/AI/runs_cpu/adapters",
+  "base_model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_name": "adapters",
+  "host": "0.0.0.0",
+  "port": 8080,
+  "omp_threads": 4,
+  "max_new_tokens": 256,
+  "temperature": 0.2,
+  "max_messages": 8,
+  "prompt_max_chars": 6000,
+  "system_prompt": "You are a recruiting decision-support assistant. Compare a CV against a job description using only job-relevant skills, experience, responsibilities, and tools. Return concise, valid JSON when the user asks for a fit assessment.",
+  "started_at": "2026-07-07T16:11:49+00:00"
+}

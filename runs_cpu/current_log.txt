@@ -1,0 +1,7 @@
+[2026-07-06 14:11:08] Worker started.
+[2026-07-06 14:11:08] Python: /root/AI/.venv-cpu/bin/python
+[2026-07-06 14:11:08] PyTorch: 2.12.1+cu130
+[2026-07-06 14:11:08] Model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+[2026-07-06 14:11:12] Training examples: 6
+[2026-07-06 14:11:12] Training started.
+[2026-07-06 14:12:13] Saved adapter to: /root/AI/runs_cpu/adapters
