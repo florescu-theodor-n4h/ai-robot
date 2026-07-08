@@ -315,14 +315,17 @@ def kill_process_tree_root(pid: int) -> tuple[bool, str]:
 # ============================================================
 
 def is_adapter_dir(path: Path) -> bool:
-    return (
-        path.is_dir()
-        and (path / "adapter_config.json").exists()
-        and any(
-            (path / filename).exists()
-            for filename in ("adapter_model.safetensors", "adapter_model.bin")
+    try:
+        return (
+            path.is_dir()
+            and (path / "adapter_config.json").is_file()
+            and any(
+                (path / filename).is_file()
+                for filename in ("adapter_model.safetensors", "adapter_model.bin")
+            )
         )
-    )
+    except OSError:
+        return False
 
 
 def discover_default_adapter() -> Path | None:
